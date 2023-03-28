@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Header() {
+export default function Header({ action }) {
   return (
     <Wrapper>
       <h1>Great Music Productio Center</h1>
-      <button>Click me</button>
+      { action }
     </Wrapper>
   )
 }

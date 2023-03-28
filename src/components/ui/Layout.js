@@ -1,15 +1,29 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import lightTheme from './themes/light.json';
+import darkTheme from './themes/dark.json';
 import Footer from './Footer';
 import Header from './Header';
 
 export default function Layout({ children }) {
+  const [isLight, setIsLight] = useState(true)
+  const toggleTheme = () => { setIsLight(!isLight) }
+  const changTheme = (
+    <button onClick={toggleTheme}>
+      Switch to { isLight ? 'dark' : 'light' } theme
+    </button>
+  )
   return (
-    <Wrapper>
-      <Header />
-      <Main>{ children }</Main>
-      <Footer />
-    </Wrapper>
+    <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
+      <Wrapper>
+        <Header action={changTheme} />
+        <Main>
+          { changTheme }
+          { children }
+        </Main>
+        <Footer />
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 
@@ -27,4 +41,7 @@ const Main = styled.div`
   margin: auto;
   padding: .8rem;
   border: thin solid;
+  
+  background: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.mainColor};
 `;
