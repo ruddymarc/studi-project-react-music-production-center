@@ -1,8 +1,11 @@
-import "./App.css";
+import Layout from "components/ui/Layout";
+import "App.css";
 
 function App() {
   return (
-    <h1>Great Music Productio Center</h1>
+    <Layout>
+      <h2>Welcome to MPC app</h2>
+    </Layout>
   );
 }
 
