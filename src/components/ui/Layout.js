@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { Outlet } from 'react-router-dom';
 import lightTheme from './themes/light.json';
 import darkTheme from './themes/dark.json';
 import Footer from './Footer';
@@ -16,7 +17,7 @@ export default function Layout({ children }) {
         <GlobalStyle />
         <Header isLight={isLight} changeTheme={toggleTheme} />
         <Main>
-          { children }
+          <Outlet />
         </Main>
         <Footer />
       </Wrapper>
