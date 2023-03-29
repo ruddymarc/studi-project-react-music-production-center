@@ -4,6 +4,7 @@ import lightTheme from './themes/light.json';
 import darkTheme from './themes/dark.json';
 import Footer from './Footer';
 import Header from './Header';
+import GlobalStyle from './GlobalStyle';
 
 export default function Layout({ children }) {
   const [isLight, setIsLight] = useState(true)
@@ -16,9 +17,9 @@ export default function Layout({ children }) {
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
       <Wrapper>
+        <GlobalStyle />
         <Header action={changTheme} />
         <Main>
-          { changTheme }
           { children }
         </Main>
         <Footer />
@@ -41,7 +42,4 @@ const Main = styled.div`
   margin: auto;
   padding: .8rem;
   border: thin solid;
-  
-  background: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.mainColor};
 `;
