@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Menu from './Menu';
 
 export default function Header({ isLight, changeTheme }) {
   return (
     <Wrapper>
       <h1>Great Music Productio Center</h1>
+      <Menu />
       <button onClick={changeTheme}>
         Switch to { isLight ? 'dark' : 'light' } theme
       </button>
