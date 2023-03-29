@@ -9,16 +9,12 @@ import GlobalStyle from './GlobalStyle';
 export default function Layout({ children }) {
   const [isLight, setIsLight] = useState(true)
   const toggleTheme = () => { setIsLight(!isLight) }
-  const changTheme = (
-    <button onClick={toggleTheme}>
-      Switch to { isLight ? 'dark' : 'light' } theme
-    </button>
-  )
+
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
       <Wrapper>
         <GlobalStyle />
-        <Header action={changTheme} />
+        <Header isLight={isLight} changeTheme={toggleTheme} />
         <Main>
           { children }
         </Main>

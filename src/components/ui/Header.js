@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Header({ action }) {
+export default function Header({ isLight, changeTheme }) {
   return (
     <Wrapper>
       <h1>Great Music Productio Center</h1>
-      { action }
+      <button onClick={changeTheme}>
+        Switch to { isLight ? 'dark' : 'light' } theme
+      </button>
     </Wrapper>
   )
 }
